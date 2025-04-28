@@ -1,0 +1,34 @@
+package Spring_Project.basic.order;
+
+import Spring_Project.basic.discount.DiscountPolicy;
+import Spring_Project.basic.member.Member;
+import Spring_Project.basic.member.MemberRepository;
+
+public class OrderServiceImpl implements OrderService {
+
+    /*
+    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
+
+    위의 방식대로 구현하면 문제점
+    OrderServiceImpl 클래스가 DiscountPolicy 인터페이스 뿐 아니라 FixDiscount or RateDiscount 구체 클래스도 의존함
+    할인 정책을 변경하려면 클라이언트 코드를 변경해야 함
+    -> OCP, DIP 원칙 벗어남 그래서 AppConfig 클래스를 통해 구체 클래스를 구현함
+     */
+
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
+
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
+
+    @Override
+    public Order createOrder(Long memberId, String itemName, int itemPrice) {
+        Member member = memberRepository.findById(memberId);
+        int discountPrice = discountPolicy.discount(member, itemPrice);
+
+        return new Order(memberId, itemName, itemPrice, discountPrice);
+    }
+}
