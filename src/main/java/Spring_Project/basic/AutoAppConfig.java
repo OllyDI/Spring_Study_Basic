@@ -15,8 +15,6 @@ import org.springframework.context.annotation.FilterType;
 // basePackageClasses 를 지정해주지 않으면 패키지 전체를 뒤져서 ComponentScan 이 붙은 클래스를 찾아 지정
 // 또는 프로젝트 패키지 최상단에 ComponentScan 클래스를 생성
 @ComponentScan(
-        basePackages = "Spring_Project.basic",
-        basePackageClasses = AutoAppConfig.class,
         excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Configuration.class)
 )
 public class AutoAppConfig {
@@ -24,8 +22,8 @@ public class AutoAppConfig {
 
     // 아래는 수동으로 만든 빈, MemoryMemberRepository 자동으로 만든 빈
     // 수동 빈이 자동 빈을 오버라이딩해버림 -> 여러 설정들이 꼬이기 때문에 잡기 어려운 버그가 발생
-    @Bean(name = "memoryMemberRepository")
-    MemberRepository memberRepository() {
-        return new MemoryMemberRepository();
-    }
+//    @Bean(name = "memoryMemberRepository")
+//    MemberRepository memberRepository() {
+//        return new MemoryMemberRepository();
+//    }
 }
