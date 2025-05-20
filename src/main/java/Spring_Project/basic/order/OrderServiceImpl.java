@@ -3,10 +3,12 @@ package Spring_Project.basic.order;
 import Spring_Project.basic.discount.DiscountPolicy;
 import Spring_Project.basic.member.Member;
 import Spring_Project.basic.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor    // final이 붙은 변수를 가지고 생성자를 자동 생성
 public class OrderServiceImpl implements OrderService {
 
     /*
@@ -23,10 +25,11 @@ public class OrderServiceImpl implements OrderService {
     private final DiscountPolicy discountPolicy;
 
 //    @Autowired 생성자가 하나면 생략 가능
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+//    @RequiredArgsConstructor 가 알아서 생성자를 만들어줘서 필요 없음
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {

@@ -1,5 +1,4 @@
 package Spring_Project.basic.member;
-
 public class Member {
     private Long id;
     private String name;
