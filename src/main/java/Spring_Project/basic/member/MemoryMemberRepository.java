@@ -1,11 +1,13 @@
 package Spring_Project.basic.member;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Component
+@Primary
 public class MemoryMemberRepository  implements MemberRepository {
 
     // 원래는 ConcurrentHashMap을 사용하여 동시접근 에러를 잡아야함

@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 
 @Configuration
-
 // 현재 만들어놓은(테스트 or AppConfig) 컨피그레이션이랑 겹쳐서 필터를 통해 제외
 // 컴포넌트스캔은 @Component 어노테이션이 붙은 클래스를 자동으로 스프링 빈에 등록해줌
 // basePackages 를 통해 파일 탐색 시간을 줄여줌
