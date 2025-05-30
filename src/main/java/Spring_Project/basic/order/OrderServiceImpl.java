@@ -1,9 +1,10 @@
 package Spring_Project.basic.order;
 
+import Spring_Project.basic.annotation.MainDiscountPolicy;
 import Spring_Project.basic.discount.DiscountPolicy;
 import Spring_Project.basic.member.Member;
 import Spring_Project.basic.member.MemberRepository;
-import lombok.RequiredArgsConstructor;
+//import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
@@ -27,7 +28,7 @@ public class OrderServiceImpl implements OrderService {
 
 //    @Autowired 생성자가 하나면 생략 가능
 //    @RequiredArgsConstructor 가 알아서 생성자를 만들어줘서 필요 없음
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
